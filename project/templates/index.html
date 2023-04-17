@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lung X-Ray Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        
+        <section class="section center" >
+            <h1>Lung X-Ray Classification</h1>
+            
+        </section>
+
+        <section class="section">
+            <p>Given an x-ray image of a patient's lungs, this machine learning model will diagnose
+                whether or not they have viral pneumonia, covid-19, or that they are otherwise healthy. 
+            </p>
+            <br>
+            
+            <table style="margin: 0px auto;" class="table1">
+                <tr>
+                    <td><img src="{{ url_for('static', filename='images/covid.jpeg') }}" style="height: 20rem;"></td>
+                    <td><img src="{{ url_for('static', filename='images/viral_pneumonia.jpeg') }}" style="height: 20rem;"></td>
+                    <td><img src="{{ url_for('static', filename='images/new-normal.jpg') }}" style="height: 20rem;"></td>
+                </tr>
+                <tr>
+                    <td><p>Patient with Covid-19</p></td>
+                    <td><p>Patient with Pneumonia</p></td>
+                    <td><p>Patient with Healthy Lungs</p></td>
+                </tr>
+            </table>
+            <section class="section center">
+                <br><a href="/play"><button type="button" class="btn2">Jump Straight to the Sandbox</button></a>
+            </section>
+            
+        </section>
+
+        <section class="section" >
+            <h2>Example</h2>
+            
+            <p>After an image is inputted to the trained model, it will output three numbers, such as [0.9, 0.04, 0.06]. 
+                This indicates the model has 90% confidence the patient has pneumonia, 4% confidence they have covid, and 6% confidence they have healthy lungs.</p><br>
+
+            <p>The probabilites are converted to a single classification so that diagnosis is fully automated. In this case,
+            the highest probability is assigned to pneumonia, so this would be the diagnosis for the patient.</p>
+            
+            <section>
+                <table class="table3">
+                    <tr>
+                        <td><img src="{{ url_for('static', filename='images/pneumonia-2.jpeg') }}" style="height: 15rem;"></td>
+                        <td><p>With 90% confidence, the model automatically diagnoses that this patient has pneumonia. </p></td>
+                    </tr>
+                </table>
+            </section>
+            <br>
+        </section>
+
+        <hr>
+        <br><br>
+        <section>
+            <h2>Training</h2>
+            
+            <p>Computer vision tasks rely on GPUs to train ML models on large image datasets using parallelization. 
+                For this example, we have trained a state-of-the-art convolutional neural network in TensorFlow on this Z by HP machine, which enables incredible
+                model training and inference times. </p>
+            
+            <table class="table2" style="margin: 0px auto;">
+                <tr>
+                    <td><img src="{{ url_for('static', filename='images/tf.png') }}" style="height: 9rem;"></td>
+                    <td><img src="{{ url_for('static', filename='images/net.jpg') }}" style="height: 10rem;"></td>
+                    <td><img src="{{ url_for('static', filename='images/zhp.jpg') }}" style="height: 10rem;"></td>
+                </tr>
+            </table>
+            <br>
+                
+            <p>This particular model achieves 95% accuracy on a test set of x-ray images that the model did not observe during its training, making it an incredible aid to physicians 
+                (although when  applying machine learning to healthcare, extra attention to detail must be made).</p>
+        </section>
+
+        <hr>
+        <br><br>
+        <section>
+            <h2>Inference & Visualization</h2>
+            
+            <p>At the core of machine learning is visualization, which provides trust in our otherwise black-box neural networks. 
+                By projecting the model's gradient, we open up that box to see where the model is focusing its attention
+                so that it can make its prediction.
+            </p>
+            
+            <table class="table3" style="margin: 0px auto;">
+                <tr>
+                    <td><img src="{{ url_for('static', filename='images/covid_with_heatmap.png') }}" style="height: 20rem;"></td>
+                    <td><img src="{{ url_for('static', filename='images/pneumonia_with_heatmap.png') }}" style="height: 20rem;"></td>
+                    <td><img src="{{ url_for('static', filename='images/new-normal-with-heatmap.png') }}" style="height: 20rem;"></td>
+                </tr>
+                <tr>
+                    <td><p>Prediction: 99% Covid</p></td>
+                    <td><p>Prediction: 90% Pneumonia</p></td>
+                    <td><p>Prediction: 95% Normal</p></td>
+                </tr>
+            </table>
+                
+        </section>
+
+        <hr>
+        <br><br>
+
+        <section>
+            <a href="/play"><h2>Try it Yourself!</h2></a>
+        </section>
+
+        <hr>
+            <hr>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+</body>
+</html>

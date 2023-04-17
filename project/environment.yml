@@ -1,0 +1,7 @@
+name: hp_covid_env_new
+dependencies:
+  - numpy
+  - tensorflow
+  - pillow
+  - flask
+  - uvicorn

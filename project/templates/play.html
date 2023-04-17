@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lung X-Ray Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+  <body>
+    <div class="container">
+      <h2>Sandbox</h2>
+      <p>Instructions: Choose a photo from the dropdown, and click Submit Photo.</p>
+      
+      <form method="POST" action="/upload">
+        <label class="l" for="file">Select a file:</label>
+
+        <select id="file" name="file">
+          {% for file in files %}
+          <option value="{{ file }}">{{ file }}</option>
+          {% endfor %}
+        </select>
+
+        <br><br>
+        <label class="btn">
+          <input type="submit" value="Upload">
+          Submit Photo
+        </label>
+        <br><br>
+        
+      </form>
+
+      <img src="/{{ filepath }}" style="height: 20rem;">
+      <p>Diagnosis: {{ diagnosis }} &nbsp&nbsp&nbsp Confidence score: {{ confidence }}</p> 
+      <br><br>
+      <a href="/"><button type="button" class="btn3">Go Back to the Home Page</button></a>
+    </div>
+  </body>
+</html>
